@@ -4,46 +4,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Día de la Mujer 🌸</title>
 
   <!-- Google Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;500;700&family=Montserrat:wght@300;400&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-  <title>Feliz Cumpleaños</title>
 </head>
 
 <body>
 
+  <!-- PARTÍCULAS DE FONDO -->
+  <div class="particles" id="particles"></div>
+
+  <!-- BOTÓN DE MÚSICA -->
+  <button class="music-btn" id="musicBtn" title="Activar música">
+    🎵
+  </button>
+
+  <!-- AUDIO LOCAL -->
+  <audio id="bgMusic" loop>
+    <source src="Es la Mujer.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="container">
 
+    <!-- BADGE DEL DÍA -->
+    <div class="badge">8 de Marzo · Día Internacional de la Mujer</div>
+
     <h1 class="title">
-      <span class="letter">Feliz</span>
-      <span class="letter"> Cumpleaños</span>
+      Feliz Día<br>de la Mujer
     </h1>
 
-    <p class="subtitle">Hoy celebramos lo hermosa que eres por dentro y por fuera ✨</p>
+    <p class="subtitle">Hoy y todos los días celebramos tu fuerza,<br>tu luz y todo lo que eres ✨</p>
 
     <!-- SOBRE -->
     <div class="envelope-wrapper">
       <div class="envelope" id="envelope">
-        <div class="letter-paper">
+        <!-- SOLAPA SUPERIOR -->
+        <div class="flap" id="flap"></div>
+        <!-- CONTENIDO DEL SOBRE -->
+        <div class="envelope-body">
+          <span class="heart-seal">💜</span>
+        </div>
+        <div class="letter-paper" id="letterPaper">
           <p>
-            Feliz cumpleaños a la doctora mas linda y mas parchada,
-            que tengas un hermoso día tan lindo como tú.
-            Att: el Ing.💖
+            Feliz Día de la Mujer💜<br><br>
+            Que este día sea tan especial, brillante y hermoso como tú eres cada día.<br><br>
+            Con admiración y cariño,<br>
+            <em>Att: el Ing. 💖</em>
           </p>
         </div>
       </div>
       <p class="click-text">Haz click en el sobre 💌</p>
     </div>
 
+    <!-- ÍCONOS DECORATIVOS -->
+    <div class="symbols">
+      <span>♀</span>
+      <span>🌸</span>
+      <span>♀</span>
+    </div>
+
   </div>
 
-  <!-- TULIPANES DECORATIVOS -->
+  <!-- FLORES INFERIORES -->
   <div class="flowers">
-    🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷 🌷
+    🌷 🌸 🌺 🌼 🌸 🌷 🌺 🌸 🌼 🌷
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

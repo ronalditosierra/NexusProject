@@ -1,99 +1,386 @@
+/* ===============================================
+   FELIZ DÍA DE LA MUJER 🌸
+   Paleta: violeta, malva, rosa dorado
+   =============================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@300;400&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --purple-deep: #6a0572;
+  --purple-mid: #9b2fae;
+  --purple-light: #ce93d8;
+  --rose: #f48fb1;
+  --rose-light: #fce4ec;
+  --gold: #f9a825;
+  --white: #fff8ff;
+}
+
+/* ---- FONDO CON GRADIENTE ANIMADO ---- */
 body {
-  background: linear-gradient(180deg, #fff5f7, #ffe4ec);
+  background: linear-gradient(135deg, #1a0025 0%, #3d0058 35%, #6a0572 65%, #9b2fae 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
   font-family: 'Cormorant Garamond', serif;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---- PARTÍCULAS ---- */
+.particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: floatUp linear infinite;
+  opacity: 0;
+  user-select: none;
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(105vh) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.7; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* ---- BOTÓN DE MÚSICA ---- */
+.music-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  /* Etiqueta flotante */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-btn:hover {
+  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 6px 28px rgba(155, 47, 174, 0.6);
+}
+
+.music-btn.playing {
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0   rgba(206, 147, 216, 0.7); }
+  70%  { box-shadow: 0 0 0 16px rgba(206, 147, 216, 0); }
+  100% { box-shadow: 0 0 0 0   rgba(206, 147, 216, 0); }
+}
+
+/* ---- CONTENEDOR PRINCIPAL ---- */
 .container {
+  position: relative;
+  z-index: 10;
   text-align: center;
-  max-width: 800px;
-  padding: 20px;
+  max-width: 750px;
+  padding: 30px 20px;
 }
 
+/* ---- BADGE 8M ---- */
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f8bbd0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 22px;
+  border-radius: 50px;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* ---- TÍTULO ---- */
 .title {
   font-family: 'Great Vibes', cursive;
-  font-size: 5rem;
-  color: #d63384;
-  margin-bottom: 20px;
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  background: linear-gradient(135deg, #f8bbd0, #ce93d8, #f9a825);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  margin-bottom: 18px;
   opacity: 0;
+  filter: drop-shadow(0 0 30px rgba(249, 168, 37, 0.4));
 }
 
+/* ---- SUBTÍTULO ---- */
 .subtitle {
-  font-size: 1.4rem;
-  color: #6c757d;
-  margin-bottom: 60px;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255, 220, 235, 0.9);
+  margin-bottom: 50px;
+  line-height: 1.7;
   opacity: 0;
 }
 
-/* SOBRE */
+/* ---- ÍCONOS FEMENINOS ---- */
+.symbols {
+  margin-top: 28px;
+  font-size: 1.6rem;
+  opacity: 0;
+  letter-spacing: 18px;
+  color: #ce93d8;
+  animation: symbolPulse 3s ease-in-out infinite;
+}
+
+@keyframes symbolPulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(206, 147, 216, 0.4)); }
+  50%       { filter: drop-shadow(0 0 14px rgba(206, 147, 216, 0.9)); }
+}
+
+/* =====================
+   SOBRE / ENVELOPE
+   ===================== */
 
 .envelope-wrapper {
   position: relative;
-  margin-top: 20px;
+  display: inline-block;
+  margin: 0 auto;
 }
 
 .envelope {
-  width: 200px;
-  height: 130px;
-  background: #f8c8dc;
+  width: 240px;
+  height: 155px;
+  background: linear-gradient(160deg, #d4a0e8, #f48fb1);
   margin: auto;
   position: relative;
   cursor: pointer;
-  border-radius: 6px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-radius: 4px 4px 8px 8px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255,255,255,0.1);
+  overflow: visible;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.envelope:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255,255,255,0.2),
+    0 0 30px rgba(206, 147, 216, 0.4);
+}
+
+/* Solapa superior (flap) */
+.flap {
+  position: absolute;
+  top: 0; left: 0;
+  width: 0; height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-top: 75px solid rgba(180, 80, 200, 0.85);
+  transform-origin: top center;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 5;
+}
+
+.flap.open {
+  transform: rotateX(180deg);
+}
+
+/* Sello corazón */
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.heart-seal {
+  font-size: 2rem;
+  animation: heartbeat 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.2); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.15); }
+  70%       { transform: scale(1); }
+}
+
+/* Triángulos inferiores del sobre (decorativos) */
 .envelope::before {
   content: "";
   position: absolute;
-  top: -65px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 100px solid transparent;
-  border-right: 100px solid transparent;
-  border-bottom: 65px solid #f8c8dc;
-  transform-origin: bottom;
+  bottom: 0; left: 0;
+  width: 0; height: 0;
+  border-left: 120px solid rgba(200, 130, 220, 0.4);
+  border-top: 80px solid transparent;
+  z-index: 3;
 }
 
+.envelope::after {
+  content: "";
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 0; height: 0;
+  border-right: 120px solid rgba(200, 130, 220, 0.4);
+  border-top: 80px solid transparent;
+  z-index: 3;
+}
+
+/* ---- CARTA ---- */
 .letter-paper {
   position: absolute;
-  width: 90%;
-  height: 120px;
-  background: white;
-  top: 5px;
-  left: 5%;
-  border-radius: 4px;
-  padding: 15px;
+  width: 130%;
+  left: -15%;
+  background: linear-gradient(160deg, #fff8ff 0%, #fce4ec 60%, #f3e5f5 100%);
+  top: 10px;
+  border-radius: 10px;
+  padding: 22px 24px 20px;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(10px);
+  transition: none;
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: #4a004f;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(206, 147, 216, 0.25),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  z-index: 200;               /* por encima de partículas y estrellas */
+  text-align: left;
+  border-top: 3px solid #ce93d8;
+}
+
+.letter-paper.visible {
+  opacity: 1;
+  transform: translateY(-92px);
+  transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 200;
+}
+
+.letter-paper p {
+  font-family: 'Cormorant Garamond', serif;
   font-size: 0.95rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
-.click-text {
-  margin-top: 15px;
-  font-size: 0.9rem;
-  color: #999;
+.letter-paper p em {
+  color: #9b2fae;
+  font-style: italic;
+  font-weight: 500;
 }
 
-/* FLORES */
-
-.flowers {
+/* Ícono decorativo dentro de la carta */
+.letter-paper::before {
+  content: '✦';
   position: absolute;
+  top: 8px;
+  right: 14px;
+  font-size: 0.9rem;
+  color: #ce93d8;
+  opacity: 0.7;
+}
+
+/* ---- TEXTO CLICK ---- */
+.click-text {
+  margin-top: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(248, 187, 208, 0.75);
+  letter-spacing: 1px;
+  animation: blink 2.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+/* ---- FLORES INFERIORES ---- */
+.flowers {
+  position: fixed;
   bottom: 10px;
   width: 100%;
   text-align: center;
-  font-size: 2rem;
-  opacity: 0.8;
+  font-size: 1.8rem;
+  z-index: 5;
+  animation: flowerSway 4s ease-in-out infinite;
+  opacity: 0;
+  transform: translateY(20px);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+@keyframes flowerSway {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-6px) scale(1.02); }
+}
+
+/* ---- GLITTER ESTRELLAS ---- */
+.star {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.4); }
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 480px) {
+  .envelope { width: 200px; height: 130px; }
+  .flap {
+    border-left-width: 100px;
+    border-right-width: 100px;
+    border-top-width: 65px;
+  }
+  .envelope::before { border-left-width: 100px; }
+  .envelope::after  { border-right-width: 100px; }
+  .letter-paper.visible { transform: translateY(-70px); }
+  .symbols { letter-spacing: 10px; }
 }
