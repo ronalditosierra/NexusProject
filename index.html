@@ -192,7 +192,7 @@
       font-size: 3.5rem;
       color: #f57f17;
       margin: 0 0 10px 0;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     .modal-text {
@@ -231,7 +231,7 @@
     <h1>¡Feliz Día de las Flores Amarillas!</h1>
 
     <div class="card">
-      <p>Para mi amiga más <b>radiante</b>. ✨</p>
+      <p>Para mi Princesa más <b>Preciosa</b>. ✨</p>
       <p>Que tu día esté lleno de luz, girasoles y mucha alegría. Gracias por brillar siempre con tu luz propia y hacer
         todo más bonito.</p>
       <a href="#" class="btn-divino" onclick="lanzarAlegria(event)">¡Recibir un abrazo! 💛</a>
@@ -243,7 +243,8 @@
     <div class="modal-content">
       <div style="font-size: 50px; margin-bottom: 5px;">🌻✨💛</div>
       <h2 class="modal-title">¡Eres Increíble!</h2>
-      <p class="modal-text">Que nunca te falten motivos para sonreír. ¡Un abrazo inmenso para ti en este día tan especial!</p>
+      <p class="modal-text">Que nunca te falten motivos para sonreír. ¡Un abrazo inmenso para ti en este día tan
+        especial!</p>
       <button class="close-btn" onclick="cerrarModal()">Guardar en el corazón 💛</button>
     </div>
   </div>
@@ -272,11 +273,11 @@
     setInterval(createFlower, 300);
 
     function lanzarAlegria(e) {
-      if(e) e.preventDefault();
+      if (e) e.preventDefault();
       // Mostrar Modal
       const modal = document.getElementById('alegriaModal');
       modal.classList.add('active');
-      
+
       // Lanzar explosión de confeti (girasoles y destellos)
       lanzarConfeti();
     }
@@ -297,21 +298,21 @@
         confeti.style.fontSize = (Math.random() * 25 + 20) + 'px';
         confeti.style.zIndex = '2000';
         confeti.style.pointerEvents = 'none';
-        
+
         document.body.appendChild(confeti);
-        
+
         // Calcular dirección aleatoria
         const tx = (Math.random() - 0.5) * 100 + 'vw';
         const ty = (Math.random() - 0.5) * 100 + 'vh';
         const rot = Math.random() * 720 + 'deg';
-        
+
         // Forzar reflow para que funcione la transición
-        confeti.offsetHeight; 
-        
+        confeti.offsetHeight;
+
         confeti.style.transition = 'transform 1.8s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1.8s ease-out';
         confeti.style.transform = `translate(-50%, -50%) translate(${tx}, ${ty}) rotate(${rot})`;
         confeti.style.opacity = '0';
-        
+
         setTimeout(() => {
           confeti.remove();
         }, 1800);
