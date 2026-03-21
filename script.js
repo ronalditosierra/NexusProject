@@ -4,7 +4,7 @@
 
 /* ---- PARTÍCULAS FLOTANTES ---- */
 const particleContainer = document.getElementById('particles');
-const emojis = ['🌸', '💜', '✨', '🌺', '💫', '♀️', '🌷', '⭐', '💕'];
+const emojis = ['🌻', '💛', '✨', '🌼', '💫', '☀️', '🍯', '⭐', '🌟'];
 
 function createParticle() {
   const el = document.createElement('span');
@@ -74,10 +74,11 @@ tl.to('.badge', {
     opacity: 1,
     duration: 1
   }, '-=0.3')
-  .to('.flowers', {
+  .to('.svg-sunflower', {
     opacity: 1,
-    y: 0,
-    duration: 1.2,
+    stagger: 0.15,
+    y: -10,
+    duration: 1.5,
     ease: 'back.out(1.2)'
   }, '-=0.8');
 
@@ -119,7 +120,7 @@ envelope.addEventListener('click', () => {
 
 /* ---- CONFETTI DE CORAZONES ---- */
 function launchHearts() {
-  const heartEmojis = ['💜', '💖', '✨', '🌸', '💕'];
+  const heartEmojis = ['💛', '🌻', '✨', '🌼', '☀️'];
   for (let i = 0; i < 18; i++) {
     const heart = document.createElement('span');
     heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
@@ -148,43 +149,4 @@ function launchHearts() {
   }
 }
 
-/* ---- MÚSICA: MP3 LOCAL ---- */
-const musicBtn = document.getElementById('musicBtn');
-const bgMusic  = document.getElementById('bgMusic');
-let musicPlaying = false;
-
-bgMusic.volume = 0;
-
-musicBtn.addEventListener('click', () => {
-  if (musicPlaying) {
-    fadeAudio(bgMusic, 0, 800, () => bgMusic.pause());
-    musicBtn.classList.remove('playing');
-    musicBtn.textContent = '🎵';
-    musicBtn.title = 'Activar música';
-    musicPlaying = false;
-  } else {
-    bgMusic.play();
-    fadeAudio(bgMusic, 0.6, 1200);
-    musicBtn.classList.add('playing');
-    musicBtn.textContent = '🔊';
-    musicBtn.title = 'Pausar música';
-    musicPlaying = true;
-  }
-});
-
-function fadeAudio(audio, targetVol, durationMs, onDone) {
-  const steps    = 30;
-  const stepTime = durationMs / steps;
-  const startVol = audio.volume;
-  const diff     = targetVol - startVol;
-  let step       = 0;
-
-  const interval = setInterval(() => {
-    step++;
-    audio.volume = Math.min(1, Math.max(0, startVol + diff * (step / steps)));
-    if (step >= steps) {
-      clearInterval(interval);
-      if (onDone) onDone();
-    }
-  }, stepTime);
-}
+// Funcionalidad de música eliminada según su solicitud 🌻

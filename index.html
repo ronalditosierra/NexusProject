@@ -4,80 +4,320 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz Día de la Mujer 🌸</title>
+  <title>Flores Amarillas para Ti ✨</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500&display=swap');
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;500;700&family=Montserrat:wght@300;400&display=swap"
-    rel="stylesheet">
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #fff9c4 0%, #ffeb3b 100%);
+      font-family: 'Quicksand', sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    .container {
+      text-align: center;
+      padding: 50px 20px;
+      z-index: 2;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      color: #f57f17;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+      animation: fadeInDown 1.5s ease;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: #795548;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      animation: fadeIn 2s ease;
+    }
+
+    /* Girasol Principal Animado */
+    .main-sunflower {
+      font-size: 100px;
+      display: inline-block;
+      animation: rotate 10s linear infinite;
+      filter: drop-shadow(0 0 10px #fbc02d);
+    }
+
+    /* Contenedor de flores flotantes */
+    .flowers-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .floating-flower {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.7;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    /* Botón con brillo */
+    .btn-divino {
+      background: #fbc02d;
+      border: none;
+      padding: 15px 30px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(251, 192, 45, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-divino:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(251, 192, 45, 0.6);
+      background: #f9a825;
+    }
+
+    /* Animaciones */
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Carta de mensaje */
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(5px);
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid #fff176;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      margin-top: 20px;
+    }
+
+    /* --- ESTILOS DEL MODAL --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 30px;
+      border: 3px solid #ffca28;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 0 40px rgba(251, 192, 45, 0.3);
+      text-align: center;
+      max-width: 450px;
+      width: 85%;
+      transform: scale(0.7) translateY(50px);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      color: #f57f17;
+      margin: 0 0 10px 0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .modal-text {
+      font-size: 1.4rem;
+      color: #5d4037;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    .close-btn {
+      background: linear-gradient(135deg, #ffca28, #f57f17);
+      border: none;
+      padding: 12px 30px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(245, 127, 23, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .close-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 25px rgba(245, 127, 23, 0.6);
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- PARTÍCULAS DE FONDO -->
-  <div class="particles" id="particles"></div>
-
-  <!-- BOTÓN DE MÚSICA -->
-  <button class="music-btn" id="musicBtn" title="Activar música">
-    🎵
-  </button>
-
-  <!-- AUDIO LOCAL -->
-  <audio id="bgMusic" loop>
-    <source src="Es la Mujer.mp3" type="audio/mpeg">
-  </audio>
+  <div class="flowers-bg" id="flowerContainer"></div>
 
   <div class="container">
+    <div class="main-sunflower">🌻</div>
+    <h1>¡Feliz Día de las Flores Amarillas!</h1>
 
-    <!-- BADGE DEL DÍA -->
-    <div class="badge">8 de Marzo · Día Internacional de la Mujer</div>
-
-    <h1 class="title">
-      Feliz Día<br>de la Mujer
-    </h1>
-
-    <p class="subtitle">Hoy y todos los días celebramos tu fuerza,<br>tu luz y todo lo que eres ✨</p>
-
-    <!-- SOBRE -->
-    <div class="envelope-wrapper">
-      <div class="envelope" id="envelope">
-        <!-- SOLAPA SUPERIOR -->
-        <div class="flap" id="flap"></div>
-        <!-- CONTENIDO DEL SOBRE -->
-        <div class="envelope-body">
-          <span class="heart-seal">💜</span>
-        </div>
-        <div class="letter-paper" id="letterPaper">
-          <p>
-            Feliz Día de la Mujer💜<br><br>
-            Que este día sea tan especial, brillante y hermoso como tú eres cada día.<br><br>
-            Con admiración y cariño,<br>
-            <em>Att: el Ing. 💖</em>
-          </p>
-        </div>
-      </div>
-      <p class="click-text">Haz click en el sobre 💌</p>
+    <div class="card">
+      <p>Para mi amiga más <b>radiante</b>. ✨</p>
+      <p>Que tu día esté lleno de luz, girasoles y mucha alegría. Gracias por brillar siempre con tu luz propia y hacer
+        todo más bonito.</p>
+      <a href="#" class="btn-divino" onclick="lanzarAlegria(event)">¡Recibir un abrazo! 💛</a>
     </div>
-
-    <!-- ÍCONOS DECORATIVOS -->
-    <div class="symbols">
-      <span>♀</span>
-      <span>🌸</span>
-      <span>♀</span>
-    </div>
-
   </div>
 
-  <!-- FLORES INFERIORES -->
-  <div class="flowers">
-    🌷 🌸 🌺 🌼 🌸 🌷 🌺 🌸 🌼 🌷
+  <!-- MODAL DE ALEGRÍA -->
+  <div class="modal-overlay" id="alegriaModal">
+    <div class="modal-content">
+      <div style="font-size: 50px; margin-bottom: 5px;">🌻✨💛</div>
+      <h2 class="modal-title">¡Eres Increíble!</h2>
+      <p class="modal-text">Que nunca te falten motivos para sonreír. ¡Un abrazo inmenso para ti en este día tan especial!</p>
+      <button class="close-btn" onclick="cerrarModal()">Guardar en el corazón 💛</button>
+    </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="script.js"></script>
+  <script>
+    // Generador de flores flotantes
+    function createFlower() {
+      const container = document.getElementById('flowerContainer');
+      const flower = document.createElement('div');
+      const icons = ['🌻', '✨', '🌼', '☀️', '💛'];
 
+      flower.classList.add('floating-flower');
+      flower.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = (Math.random() * 3 + 5) + 's';
+      flower.style.fontSize = (Math.random() * 20 + 20) + 'px';
+
+      container.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 8000);
+    }
+
+    setInterval(createFlower, 300);
+
+    function lanzarAlegria(e) {
+      if(e) e.preventDefault();
+      // Mostrar Modal
+      const modal = document.getElementById('alegriaModal');
+      modal.classList.add('active');
+      
+      // Lanzar explosión de confeti (girasoles y destellos)
+      lanzarConfeti();
+    }
+
+    function cerrarModal() {
+      const modal = document.getElementById('alegriaModal');
+      modal.classList.remove('active');
+    }
+
+    function lanzarConfeti() {
+      const icons = ['🌻', '✨', '💛', '🌼', '☀️'];
+      for (let i = 0; i < 40; i++) {
+        const confeti = document.createElement('div');
+        confeti.innerText = icons[Math.floor(Math.random() * icons.length)];
+        confeti.style.position = 'fixed';
+        confeti.style.left = '50%';
+        confeti.style.top = '50%';
+        confeti.style.fontSize = (Math.random() * 25 + 20) + 'px';
+        confeti.style.zIndex = '2000';
+        confeti.style.pointerEvents = 'none';
+        
+        document.body.appendChild(confeti);
+        
+        // Calcular dirección aleatoria
+        const tx = (Math.random() - 0.5) * 100 + 'vw';
+        const ty = (Math.random() - 0.5) * 100 + 'vh';
+        const rot = Math.random() * 720 + 'deg';
+        
+        // Forzar reflow para que funcione la transición
+        confeti.offsetHeight; 
+        
+        confeti.style.transition = 'transform 1.8s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1.8s ease-out';
+        confeti.style.transform = `translate(-50%, -50%) translate(${tx}, ${ty}) rotate(${rot})`;
+        confeti.style.opacity = '0';
+        
+        setTimeout(() => {
+          confeti.remove();
+        }, 1800);
+      }
+    }
+  </script>
 </body>
 
 </html>
