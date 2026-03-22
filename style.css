@@ -1,0 +1,378 @@
+/* ===============================================
+   FELIZ DÍA DE LAS FLORES AMARILLAS 🌻
+   Paleta: amarillo, dorado, naranja cálido
+   =============================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --yellow-deep: #ff8f00;   /* Ámbar oscuro */
+  --yellow-mid: #ffca28;    /* Amarillo brillante */
+  --yellow-light: #fff59d;  /* Amarillo muy claro */
+  --orange: #f57f17;        /* Naranja dorado */
+  --white: #fffdfa;
+}
+
+/* ---- FONDO CON GRADIENTE ANIMADO ---- */
+body {
+  background: linear-gradient(135deg, #f57f17 0%, #ffb300 40%, #ffca28 75%, #fff59d 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
+  font-family: 'Cormorant Garamond', serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---- PARTÍCULAS FLOTANTES (EMOJIS) ---- */
+.particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: floatUp linear infinite;
+  opacity: 0;
+  user-select: none;
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(105vh) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.7; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* ---- CONTENEDOR PRINCIPAL Y GLASSMORPHISM ---- */
+.container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 650px;
+  padding: 40px 30px;
+  width: 90%;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* ---- BADGE ---- */
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #5d4037;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 50px;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(-20px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* ---- TÍTULO ---- */
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3.2rem, 8vw, 6rem);
+  background: linear-gradient(135deg, #d84315, #e65100, #ff8f00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  opacity: 0;
+  filter: drop-shadow(0 4px 6px rgba(255, 255, 255, 0.5));
+}
+
+/* ---- SUBTÍTULO ---- */
+.subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #4e342e;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  opacity: 0;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+}
+
+/* ---- ÍCONOS VINCULADOS ---- */
+.symbols {
+  margin-top: 28px;
+  font-size: 1.8rem;
+  opacity: 0;
+  letter-spacing: 20px;
+  color: #ffb300;
+  animation: symbolPulse 3s ease-in-out infinite;
+}
+
+@keyframes symbolPulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)); transform: scale(1); }
+  50%       { filter: drop-shadow(0 0 14px rgba(255, 255, 255, 1)); transform: scale(1.1); }
+}
+
+/* =====================
+   SOBRE / ENVELOPE
+   ===================== */
+
+.envelope-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.envelope {
+  width: 260px;
+  height: 165px;
+  background: linear-gradient(160deg, #ffca28, #ff8f00);
+  margin: auto;
+  position: relative;
+  cursor: pointer;
+  border-radius: 6px 6px 10px 10px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 2px rgba(255,255,255,0.4);
+  overflow: visible;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow:
+    0 30px 50px rgba(0, 0, 0, 0.35),
+    0 0 0 2px rgba(255,255,255,0.6),
+    0 0 40px rgba(255, 143, 0, 0.5);
+}
+
+/* Solapa superior (flap) */
+.flap {
+  position: absolute;
+  top: 0; left: 0;
+  width: 0; height: 0;
+  border-left: 130px solid transparent;
+  border-right: 130px solid transparent;
+  border-top: 85px solid rgba(245, 127, 23, 0.9);
+  transform-origin: top center;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 5;
+}
+
+.flap.open {
+  transform: rotateX(180deg);
+}
+
+/* Sello corazón */
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.heart-seal {
+  font-size: 2.5rem;
+  animation: heartbeat 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.25); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.15); }
+  70%       { transform: scale(1); }
+}
+
+/* Triángulos inferiores del sobre (decorativos) */
+.envelope::before {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 0;
+  border-left: 130px solid rgba(255, 235, 59, 0.35);
+  border-top: 85px solid transparent;
+  z-index: 3;
+}
+
+.envelope::after {
+  content: "";
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 0; height: 0;
+  border-right: 130px solid rgba(255, 235, 59, 0.35);
+  border-top: 85px solid transparent;
+  z-index: 3;
+}
+
+/* ---- CARTA ---- */
+.letter-paper {
+  position: absolute;
+  width: 120%;
+  left: -10%;
+  background: linear-gradient(160deg, #fffdfa 0%, #fff9c4 60%, #fff59d 100%);
+  top: 10px;
+  border-radius: 12px;
+  padding: 24px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: none;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #3e2723;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 202, 40, 0.5),
+    inset 0 2px 0 rgba(255,255,255,1);
+  z-index: 200;
+  text-align: left;
+  border-top: 4px solid #ffca28;
+}
+
+.letter-paper.visible {
+  opacity: 1;
+  transform: translateY(-110px);
+  transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 200;
+}
+
+.letter-paper p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+}
+
+.letter-paper p em {
+  color: #e65100;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+
+.letter-paper::before {
+  content: '✦';
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  font-size: 1.1rem;
+  color: #ff8f00;
+  opacity: 0.8;
+}
+
+/* ---- TEXTO CLICK ---- */
+.click-text {
+  margin-top: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #5d4037;
+  letter-spacing: 2px;
+  animation: bounceText 2.5s ease-in-out infinite;
+  text-shadow: 0 1px 5px rgba(255,255,255,0.7);
+}
+
+@keyframes bounceText {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50%       { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ---- GIRASOLES DIBUJADOS (SVGs INFERIORES) ---- */
+.drawn-sunflowers {
+  position: fixed;
+  bottom: -40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  z-index: 50;
+  pointer-events: none;
+}
+.svg-sunflower {
+  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.3));
+  transform-origin: center center;
+}
+.sf-1 { width: 140px; height: 140px; animation: spin 25s linear infinite; opacity: 0; animation-delay: 0.5s;}
+.sf-2 { width: 100px; height: 100px; animation: spinReverse 18s linear infinite; margin-bottom: 20px; opacity: 0; animation-delay: 0.8s;}
+.sf-3 { width: 180px; height: 180px; animation: spin 30s linear infinite; z-index: 51; opacity: 0; animation-delay: 0.2s;}
+.sf-4 { width: 130px; height: 130px; animation: spinReverse 22s linear infinite; margin-bottom: 15px; opacity: 0; animation-delay: 0.6s;}
+.sf-5 { width: 160px; height: 160px; animation: spin 28s linear infinite; opacity: 0; animation-delay: 0.4s;}
+.sf-6 { width: 90px;  height: 90px;  animation: spinReverse 15s linear infinite; margin-bottom: 10px; opacity: 0; animation-delay: 0.9s;}
+.sf-7 { width: 150px; height: 150px; animation: spin 26s linear infinite; opacity: 0; animation-delay: 0.3s;}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spinReverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+/* ---- GLITTER ESTRELLAS ---- */
+.star {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 2s ease-in-out infinite;
+  z-index: 0;
+  box-shadow: 0 0 6px #fff, 0 0 12px #ffeb3b;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(0.6); }
+  50%       { opacity: 1;   transform: scale(1.5); }
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 600px) {
+  .envelope { width: 220px; height: 140px; }
+  .flap {
+    border-left-width: 110px;
+    border-right-width: 110px;
+    border-top-width: 75px;
+  }
+  .envelope::before { border-left-width: 110px; border-top-width: 75px; }
+  .envelope::after  { border-right-width: 110px; border-top-width: 75px; }
+  .letter-paper.visible { transform: translateY(-85px); }
+  .symbols { letter-spacing: 12px; }
+  .container { padding: 30px 20px; }
+  .drawn-sunflowers { bottom: -30px; }
+  .sf-3, .sf-5, .sf-7 { width: 120px; height: 120px; }
+}
